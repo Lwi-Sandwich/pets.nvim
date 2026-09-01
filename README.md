@@ -105,6 +105,7 @@ These are all the available commands:
 |rubber duck|yellow|
 |snake|green|
 |zappy|yellow|
+|chicken|brown, white|
 
 <!-- panvimdoc-ignore-start -->
 ![bar.png](./bar.png)
@@ -126,8 +127,5 @@ A big thanks to everyone that helped, helps or will help the project!
 <a href="https://github.com/giusgad/pets.nvim/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=giusgad/pets.nvim"/>
 </a>
-
-Note that the repo was deleted and recreated in order to remove some of the old cat assets
-that were still visible in the cache of some pull requests.
 
 <!-- panvimdoc-ignore-end -->
