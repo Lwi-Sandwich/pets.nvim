@@ -114,6 +114,7 @@ These are all the available commands:
 |panda|black, brown|
 |raccoon|gray, gray_jimothy|
 |rat|brown, gray, white|
+|skeleton|blue, brown, green, orange, pink, purple, red, warrior, white, yellow|
 
 <!-- panvimdoc-ignore-start -->
 ![bar.png](./bar.png)
