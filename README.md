@@ -112,6 +112,7 @@ These are all the available commands:
 |monkey|gray|
 |morph|purple|
 |panda|black, brown|
+|raccoon|gray, gray_jimothy|
 
 <!-- panvimdoc-ignore-start -->
 ![bar.png](./bar.png)
