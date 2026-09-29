@@ -111,6 +111,7 @@ These are all the available commands:
 |horse| brown, magical, paint_beige, paint_black, paint_brown, socks, warrior, white |
 |monkey|gray|
 |morph|purple|
+|panda|black, brown|
 
 <!-- panvimdoc-ignore-start -->
 ![bar.png](./bar.png)
