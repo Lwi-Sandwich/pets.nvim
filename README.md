@@ -106,6 +106,10 @@ These are all the available commands:
 |snake|green|
 |zappy|yellow|
 |chicken|brown, white|
+|deno|green|
+|fox|red, white|
+|horse| brown, magical, paint_beige, paint_black, paint_brown, socks, warrior, white |
+|monkey|gray|
 
 <!-- panvimdoc-ignore-start -->
 ![bar.png](./bar.png)
