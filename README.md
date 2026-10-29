@@ -16,6 +16,11 @@ and shares all of its limitations. Here are the most significant ones:
 - Only works with terminal emulators that support the [kitty graphics protocol](https://sw.kovidgoyal.net/kitty/graphics-protocol/)
     To be more precise the only terminal I tested where I was able to have the protocol working correctly is kitty itself.
 - Doesn't currently work inside tmux
+- `hologram.nvim` is not maintained. I am currently waiting on the release of neovim v0.13
+to remove the plugin.
+- Certain pets from VSCode Pets, like the cat and the bunny, are not open source. I am
+willing to pay for the sprites but I first need to find a way to bundle them without
+putting the sprites directly in the repo. 
 
 ## 📦 Installation
 
@@ -26,7 +31,7 @@ Examples:
 With packer:
 ```lua
 use({
-  "giusgad/pets.nvim",
+  "Lwi-Sandwich/pets.nvim",
   requires = {
     "giusgad/hologram.nvim",
     "MunifTanjim/nui.nvim",
@@ -36,7 +41,7 @@ use({
 With lazy:
 ```lua
 {
-  "giusgad/pets.nvim",
+  "Lwi-Sandwich/pets.nvim",
   dependencies = { "MunifTanjim/nui.nvim", "giusgad/hologram.nvim" },
 }
 ```
@@ -46,8 +51,8 @@ require("pets").setup({
   -- your options here
 })
 ```
->Note: if you want to use the original `hologram.nvim` instead of my fork,replace `giusgad/hologram.nvim` with `edluffy/hologram.nvim`.
->My fork for now only fixes errors with hologram `auto_display = true`, and the plugin should not have any other issues with the original.
+>Note: if you want to use the original `hologram.nvim` instead of giusgad's fork,replace `giusgad/hologram.nvim` with `edluffy/hologram.nvim`.
+>Their fork for now only fixes errors with hologram `auto_display = true`, and the plugin should not have any other issues with the original.
 
 ## ⚙️ Configuration
 
@@ -116,6 +121,8 @@ These are all the available commands:
 |rat|brown, gray, white|
 |skeleton|blue, brown, green, orange, pink, purple, red, warrior, white, yellow|
 |snail|brown|
+|totoro|gray|
+|turtle|green, orange|
 
 <!-- panvimdoc-ignore-start -->
 ![bar.png](./bar.png)
@@ -125,17 +132,30 @@ These are all the available commands:
 
 - The dog assets were created by [NVPH Studio](https://nvph-studio.itch.io/dog-animation-4-different-dogs). All the details about the license
 can be found [here](https://creativecommons.org/licenses/by-nd/4.0/#).
-- The slime was created by me (for now it follows the MIT license):) 
+- The slime was created by giusgad (for now it follows the MIT license):) 
 - The Clippy, Rocky, Zappy, rubber duck, snake, cockatiel, Ferris the crab, and Mod the dotnet bot assets were created by [Marc Duiker](https://twitter.com/marcduiker) for [vscode-pets](https://github.com/tonybaloney/vscode-pets) ([license](https://github.com/tonybaloney/vscode-pets/blob/master/LICENSE)).
 - The old cat assets were designed by [SeethingSwarm](https://seethingswarm.itch.io/catset).
+- The following assets come from [vscode-pets](https://github.com/tonybaloney/vscode-pets) ([license](https://github.com/tonybaloney/vscode-pets/blob/master/LICENSE)):
+  - The fox was created by [Elthen](https://twitter.com/pixelthen).
+  - The horse and skeleton were adapted by [Chris Kent](https://github.com/thechriskent) from assets by [Onfe](https://onfe.itch.io/horse-sprite-with-rider-asset-pack) and [MonoPixelArt](https://monopixelart.itch.io/).
+  - The panda was created by [Jessie Ferris](https://github.com/jeferris).
+  - The snail was created by [Kennet Shin](https://github.com/WoofWoof0).
+  - The turtle was designed by enkeefe using [Pixilart](https://www.pixilart.com/draw).
+  - The chicken was contributed by [@gulyapulya](https://github.com/gulyapulya), [@MhouneyLH](https://github.com/MhouneyLH) and [@Tomansion](https://github.com/Tomansion) (brown).
+  - Deno was contributed by [Jo Franchetti](https://github.com/thisisjofrank).
+  - The monkey was contributed by [Anthony Shaw](https://github.com/tonybaloney).
+  - Morph (from Disney's *Treasure Planet*) was contributed by [Luís Santos](https://github.com/luismgsantos).
+  - The raccoon was contributed by [Antero Morgado](https://github.com/Teroooo) (Jimothy by [Anthony Shaw](https://github.com/tonybaloney)).
+  - The rat was contributed by [@piotrszleg](https://github.com/piotrszleg).
+  - Totoro was contributed by [Rob Conery](https://github.com/robconery).
 
 <!-- panvimdoc-ignore-start -->
 ## 🙏 Acknowledgements
 
 A big thanks to everyone that helped, helps or will help the project!
 
-<a href="https://github.com/giusgad/pets.nvim/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=giusgad/pets.nvim"/>
+<a href="https://github.com/Lwi-Sandwich/pets.nvim/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Lwi-Sandwich/pets.nvim"/>
 </a>
 
 <!-- panvimdoc-ignore-end -->
