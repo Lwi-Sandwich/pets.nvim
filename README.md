@@ -113,7 +113,7 @@ These are all the available commands:
 |chicken|brown, white|
 |deno|green|
 |fox|red, white|
-|horse| brown, magical, paint_beige, paint_black, paint_brown, socks, warrior, white |
+|horse|black, brown, magical, paint_beige, paint_black, paint_brown, socks_beige, socks_black, socks_brown, warrior, white|
 |monkey|gray|
 |morph|purple|
 |panda|black, brown|
@@ -141,12 +141,12 @@ can be found [here](https://creativecommons.org/licenses/by-nd/4.0/#).
   - The panda was created by [Jessie Ferris](https://github.com/jeferris).
   - The snail was created by [Kennet Shin](https://github.com/WoofWoof0).
   - The turtle was designed by enkeefe using [Pixilart](https://www.pixilart.com/draw).
-  - The chicken was contributed by [@gulyapulya](https://github.com/gulyapulya), [@MhouneyLH](https://github.com/MhouneyLH) and [@Tomansion](https://github.com/Tomansion) (brown).
+  - The chicken was created by [@gulyapulya](https://github.com/gulyapulya), with the brown variant by [@Tomansion](https://github.com/Tomansion).
   - Deno was contributed by [Jo Franchetti](https://github.com/thisisjofrank).
   - The monkey was contributed by [Anthony Shaw](https://github.com/tonybaloney).
-  - Morph (from Disney's *Treasure Planet*) was contributed by [Luís Santos](https://github.com/luismgsantos).
-  - The raccoon was contributed by [Antero Morgado](https://github.com/Teroooo) (Jimothy by [Anthony Shaw](https://github.com/tonybaloney)).
-  - The rat was contributed by [@piotrszleg](https://github.com/piotrszleg).
+  - Morph (inspired by Disney's *Treasure Planet*) was created by [Luís Santos](https://github.com/luismgsantos).
+  - The raccoon was drawn by [Antero Morgado](https://github.com/Teroooo), based on [Elthen's raccoon sprites](https://elthen.itch.io/2d-pixel-art-raccoon-sprites). The Jimothy variant was provided by the VS Code marketing team.
+  - The rat was created by [Lune Szlęg](https://github.com/luneszleg).
   - Totoro was contributed by [Rob Conery](https://github.com/robconery).
 
 <!-- panvimdoc-ignore-start -->
