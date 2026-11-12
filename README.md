@@ -59,7 +59,7 @@ require("pets").setup({
 This is the default configuration:
 ```lua
 {
-  row = 1, -- the row (height) to display the pet at (higher row means the pet is lower on the screen), must be 1<=row<=10
+  row = 0, -- the row (height) to display the pet at (higher row means the pet is higher on the screen)
   col = 0, -- the column to display the pet at (set to high number to have it stay still on the right side)
   speed_multiplier = 1, -- you can make your pet move faster/slower. If slower the animation will have lower fps.
   default_pet = "dog", -- the pet to use for the PetNew command
@@ -91,7 +91,7 @@ These are all the available commands:
 
 ## ❔ FAQ - if something doesn't work
 
-- If the pet is not at the height you desire change the `row` option (higher row means the pet is displayed lower on the screen)
+- If the pet is not at the height you desire change the `row` option (higher row means the pet is displayed higher on the screen)
 - If you're seeing a square around the pets, try setting `avoid_statusline` to `true`. If you're still seeing it
     try setting `winblend` to 0 or using a custom highlight group as shown [above](#-Configuration) and in #8.
 - If you don't see the pet at all checkout the [limitations](#-Limitations) and try changing the row value.

@@ -6,8 +6,8 @@ M.paused = false
 M.idle = false
 
 M.options = {
-    row = 1, -- the row (height) to display the pet at
-    col = 0, -- the column to display the pet at (set to high numeber to have it stay stil at the right)
+    row = 0, -- the row (height) to display the pet at, starting from bottom
+    col = 0, -- the column to display the pet at (set to high number to have it stay stil at the right)
     speed_multiplier = 1,
     default_pet = "dog",
     default_style = "brown",
@@ -18,6 +18,8 @@ M.options = {
 
 M.pets = {}
 
+local POPUP_HEIGHT = 20
+
 function M.setup(options)
     options = options or {}
     M.options = vim.tbl_deep_extend("force", M.options, options)
@@ -25,13 +27,13 @@ function M.setup(options)
     -- popup opts
     local popup_opts = {
         position = {
-            row = "100%",
+            row = utils.popup_row(POPUP_HEIGHT),
             col = "100%",
         },
         relative = "editor",
         size = {
             width = M.options.popup.width,
-            height = 10,
+            height = POPUP_HEIGHT,
         },
         focusable = false,
         enter = false,
@@ -41,7 +43,6 @@ function M.setup(options)
     }
     if M.options.popup.avoid_statusline then
         local hl = utils.parse_popup_hl(M.options.popup.hl)
-        popup_opts.position.row = "99%"
         popup_opts.win_options = { winhighlight = hl }
     end
     M.options.popup = popup_opts
@@ -141,6 +142,7 @@ function M.toggle_idle()
 end
 
 function M.refresh()
+    M.options.popup.position.row = utils.popup_row(M.options.popup.size.height)
     for _, pet in pairs(M.pets) do
         pet:refresh_popup()
     end

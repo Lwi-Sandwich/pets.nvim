@@ -27,7 +27,7 @@ function M.Animation.new(sourcedir, type, style, popup, user_opts, state)
     instance.popup = popup
     instance.state = state
 
-    for _ = 1, instance.popup._.layout.size.height do
+    for _ = 1, instance.popup.win_config.height do
         table.insert(lines, " ")
     end
 
@@ -38,7 +38,8 @@ function M.Animation.new(sourcedir, type, style, popup, user_opts, state)
     else
         M.base_col = user_opts.col
     end
-    instance.row, instance.col = user_opts.row, math.random(M.base_col, popup.win_config.width - 8)
+    instance.col = math.random(M.base_col, popup.win_config.width - 8)
+    instance.floor = popup.win_config.height - user_opts.row
 
     -- setup frames
     for _, action in pairs(instance.actions) do
@@ -141,7 +142,8 @@ function M.Animation:next_frame()
     -- the frames table contains the images for every action
     local image = self.frames[self.current_action][self.frame_counter]
     M.Animation.set_next_col(self)
-    local ok = pcall(image.display, image, self.row, self.col, self.popup.bufnr, {})
+    local top = math.max(1, self.floor - image.rows)
+    local ok = pcall(image.display, image, top, self.col, self.popup.bufnr, {})
     if not ok then
         self:stop()
         if self.popup then

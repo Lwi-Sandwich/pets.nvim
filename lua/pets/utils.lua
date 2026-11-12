@@ -8,6 +8,14 @@ M.default_pet_table = {
     },
 }
 
+function M.popup_row(height)
+    local bottom = vim.o.lines - vim.o.cmdheight
+    if vim.o.laststatus ~= 0 then
+        bottom = bottom - 1
+    end
+    return math.max(0, bottom - height)
+end
+
 function M.listdir(path)
     local sol = {}
     for val in vim.fs.dir(path) do
