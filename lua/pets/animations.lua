@@ -2,6 +2,9 @@ local M = {}
 M.Animation = {}
 M.Animation.__index = M.Animation
 
+-- change the starting id to prevent collisions with other plugins
+require("hologram.image").next_id = 0x40000000
+
 -- lines to insert in the buffer to avoid image stretching
 local lines = {}
 
