@@ -150,7 +150,7 @@ function M.Animation:next_frame()
         if self.current_image then
             self.current_image:delete()
         end
-        if not self.hidden then
+        if not self.state.hidden then
             self.popup:mount()
             self:start()
         end

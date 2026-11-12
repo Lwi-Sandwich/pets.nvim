@@ -1,9 +1,12 @@
 local pets = require("pets")
 local utils = require("pets.utils")
 
+local timer = assert(vim.uv.new_timer())
 vim.api.nvim_create_autocmd({ "VimResized", "WinResized" }, {
     callback = function()
-        pets.refresh()
+        -- Wait a bit to try to prevent race conditions
+        timer:stop()
+        timer:start(100, 0, vim.schedule_wrap(pets.refresh))
     end,
 })
 

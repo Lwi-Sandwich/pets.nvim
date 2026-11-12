@@ -79,10 +79,15 @@ function M.Pet:set_idle(idle)
 end
 
 function M.Pet:refresh_popup()
+    self.animation:stop()
     self.popup:unmount()
     self.popup = require("nui.popup")(self.popup_opts)
     self.popup:mount()
     self.animation.popup = self.popup
+    if not self.state.hidden then
+        self.popup:mount()
+        self.animation:start()
+    end
 end
 
 return M
