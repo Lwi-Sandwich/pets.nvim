@@ -8,4 +8,13 @@ return {
     },
     idle_actions = { "idle", "swipe" },
     first_action = "idle",
+    timings = {
+        default = {
+            idle = 250,
+            run = 250,
+            swipe = 320,
+            walk = { 1000, 150, 150, 150, 1500, 150, 150 },
+            walk_fast = 250,
+        },
+    },
 }

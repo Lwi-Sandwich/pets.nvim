@@ -23,4 +23,13 @@ return {
             slow = { "walk_left" },
         },
     },
+    timings = {
+        default = {
+            idle = 150,
+            run = 50,
+            swipe = { 150, 150, 150, 150, 150, 300, 300, 300, 300 },
+            walk = 100,
+            walk_fast = 50,
+        },
+    },
 }

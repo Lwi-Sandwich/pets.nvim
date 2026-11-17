@@ -20,4 +20,22 @@ return {
             fast = { "run_left" },
         },
     },
+    timings = {
+        default = {
+            fall_from_grab = 470,
+            idle = 100,
+            jump = 470,
+            land = 470,
+            lie = 250,
+            run = 150,
+            swipe = {
+                500, 100, 100, 100, 100, 300, 100, 300, 100, 100, 100, 100, 100, 100, 100, 100, 100, 500, 100, 100,
+                100, 100, 100, 100, 100, 100, 100,
+            },
+            walk = 470,
+            wallclimb = 350,
+            wallgrab = 470,
+            with_ball = 100,
+        },
+    },
 }

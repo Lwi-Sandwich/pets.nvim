@@ -21,4 +21,7 @@ return {
             fast = { "run_left" },
         },
     },
+    timings = {
+        default = { idle = 125, liedown = 125, pee = 125, run = 125, sit = 125, walk = 125 },
+    },
 }

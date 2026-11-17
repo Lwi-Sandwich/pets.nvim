@@ -59,6 +59,7 @@ function M.Animation.new(sourcedir, type, style, popup, user_opts, state)
     instance.movements = pet.movements
     instance.first_action = pet.first_action
     instance.get_death_animation = pet.get_death_animation
+    instance.timings = pet.timings
 
     return instance
 end
@@ -67,8 +68,8 @@ function M.Animation:start_timer()
     if self.timer ~= nil then
         self:stop_timer()
     end
-    self.timer = vim.loop.new_timer()
-    self.timer:start(0, 1000 / (self.speed_multiplier * 8), function()
+    self.timer = vim.uv.new_timer()
+    self.timer:start(0, 0, function()
         vim.schedule(function()
             M.Animation.next_frame(self)
         end)
@@ -88,7 +89,7 @@ end
 -- @function start the animation
 function M.Animation:start()
     if self.timer ~= nil then -- reset timer
-        self.timer = nil
+        self:stop_timer()
     end
     self.repetitions = 0
 
@@ -156,9 +157,20 @@ function M.Animation:next_frame()
             self.popup:mount()
             self:start()
         end
+        return
     end
+    local delay = utils.get_frame_delay(self.timings, self.style, self.current_action, self.frame_counter)
+    delay = math.floor(delay / self.speed_multiplier)
     self.current_image = image
     self.frame_counter = self.frame_counter + 1
+    if self.timer == nil or self.state.paused or self.state.hidden then
+        return
+    end
+    self.timer:start(delay, 0, function()
+        vim.schedule(function()
+            M.Animation.next_frame(self)
+        end)
+    end)
 end
 
 -- @function decide which action comes after the current_action

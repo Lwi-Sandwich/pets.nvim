@@ -35,4 +35,19 @@ return {
         end
         return "die"
     end,
+    timings = {
+        default = {
+            die = 125,
+            divide = 125,
+            idle_blink = 125,
+            idle_wobble = 125,
+            join = 125,
+            run = 125,
+            split_die = 125,
+            split_idle = 125,
+            split_swap = 125,
+            split_walk = 125,
+            walk = 125,
+        },
+    },
 }

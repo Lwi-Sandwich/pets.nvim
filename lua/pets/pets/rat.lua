@@ -23,4 +23,7 @@ return {
             slow = { "walk_left" },
         },
     },
+    timings = {
+        default = { idle = 130, run = 100, swipe = 170, walk = 100, walk_fast = 100, with_ball = 130 },
+    },
 }

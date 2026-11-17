@@ -24,6 +24,11 @@ putting the sprites directly in the repo.
 
 ## 📦 Installation
 
+### Requirements
+- Neovim 0.10+
+- A terminal that supports the [kitty graphics protocol](https://sw.kovidgoyal.net/kitty/graphics-protocol/)
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim) and [hologram.nvim](https://github.com/giusgad/hologram.nvim)
+
 Install with your favorite package manager!
 
 Examples:

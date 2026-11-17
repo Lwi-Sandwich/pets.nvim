@@ -6,6 +6,7 @@ M.default_pet_table = {
         right = { slow = {}, normal = {}, fast = {} },
         left = { slow = {}, normal = {}, fast = {} },
     },
+    timings = {},
 }
 
 function M.popup_row(height)
@@ -85,6 +86,28 @@ function M.parse_popup_hl(highlight)
         end, vim.tbl_keys(highlight)),
         ","
     )
+end
+
+function M.lookup_frame_delay(timings, style, action)
+    -- Everything is in ms
+    action = action:gsub("_left$", "")
+    local DEFAULT_DELAY = 125
+    local override = timings[style] -- Check if the color has specific timings
+    if override and override[action] then
+        return override[action]
+    end
+    if timings.default and timings.default[action] then
+        return timings.default[action]
+    end
+    return DEFAULT_DELAY
+end
+
+function M.get_frame_delay(timings, style, action, frame)
+    local delay = M.lookup_frame_delay(timings, style, action)
+    if type(delay) == "table" then
+        return (delay[frame] or delay[1])
+    end
+    return delay
 end
 
 return M

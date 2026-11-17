@@ -20,4 +20,15 @@ return {
             fast = { "walk_fast_left" },
         },
     },
+    timings = {
+        default = {
+            idle = 250,
+            lie = { 1000, 500, 200, 1000, 1000, 700, 400, 400, 1000 },
+            run = 1000,
+            swipe = 200,
+            walk = 1000,
+            walk_fast = 1000,
+            with_ball = 200,
+        },
+    },
 }
