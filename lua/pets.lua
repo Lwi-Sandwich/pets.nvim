@@ -7,7 +7,6 @@ M.idle = false
 
 M.options = {
     row = 0, -- the row (height) to display the pet at, starting from bottom
-    col = 0, -- the column to display the pet at (set to high number to have it stay stil at the right)
     speed_multiplier = 1,
     default_pet = "dog",
     default_style = "brown",

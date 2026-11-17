@@ -65,7 +65,6 @@ This is the default configuration:
 ```lua
 {
   row = 0, -- the row (height) to display the pet at (higher row means the pet is higher on the screen)
-  col = 0, -- the column to display the pet at (set to high number to have it stay still on the right side)
   speed_multiplier = 1, -- you can make your pet move faster/slower. If slower the animation will have lower fps.
   default_pet = "dog", -- the pet to use for the PetNew command
   default_style = "brown", -- the style of the pet to use for the PetNew command

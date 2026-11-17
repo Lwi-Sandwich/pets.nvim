@@ -33,12 +33,8 @@ function M.Animation.new(sourcedir, type, style, popup, user_opts, state)
 
     -- user options
     instance.speed_multiplier = user_opts.speed_multiplier
-    if user_opts.col > popup.win_config.width - 8 then
-        M.base_col = popup.win_config.width - 8
-    else
-        M.base_col = user_opts.col
-    end
-    instance.col = math.random(M.base_col, popup.win_config.width - 8)
+    -- Arbitrary number of columns to prevent spawning too far right
+    instance.col = math.random(0, math.max(0, popup.win_config.width - 15))
     instance.floor = popup.win_config.height - user_opts.row
 
     -- setup frames
@@ -158,7 +154,7 @@ function M.Animation:next_frame()
     end
     -- the frames table contains the images for every action
     local image = self.frames[self.current_action][self.frame_counter]
-    M.Animation.set_next_col(self)
+    M.Animation.set_next_col(self, image.cols)
     local top = math.max(1, self.floor - image.rows)
     local ok = pcall(image.display, image, top, self.col, self.popup.bufnr, {})
     if not ok then
@@ -216,61 +212,68 @@ function M.Animation:set_next_action()
 end
 
 -- @function set horizontal movement per frame based on current action
-function M.Animation:set_next_col()
+-- @param cols number of column of the current image, used for offsets
+function M.Animation:set_next_col(cols)
+    local NORMAL_SPEED = 1
+    local FAST_SPEED = 2
+    local SLOW_RATE = 2
     local width = self.popup.win_config.width
     if vim.tbl_contains(self.movements.right.normal, self.current_action) then
-        if self.col < width - 8 then
-            self.col = self.col + 1
+        if self.col < width - cols then
+            self.col = self.col + NORMAL_SPEED
         else
-            self.col = M.base_col
+            self.col = 0
         end
     elseif vim.tbl_contains(self.movements.right.fast, self.current_action) then
-        if self.col < width - 8 then
-            self.col = self.col + 2
+        if self.col < width - cols then
+            self.col = self.col + FAST_SPEED
         else
-            self.col = M.base_col
+            self.col = 0
         end
     elseif vim.tbl_contains(self.movements.right.slow, self.current_action) then
-        if self.col < width - 8 then
-            if #self.frames[self.current_action] <= 2 then -- if there is only one frame in the current action
-                if self.repetitions % 2 == 0 then -- then use repetitions as a counter
-                    self.col = self.col + 1
+        if self.col < width - cols then
+            if #self.frames[self.current_action] < 2 then -- if there is only one frame in the current action
+                if self.repetitions % SLOW_RATE == 0 then -- then use repetitions as a counter
+                    self.col = self.col + NORMAL_SPEED
                 end
             else
-                if self.frame_counter % 2 == 0 then
-                    self.col = self.col + 1
+                if self.frame_counter % SLOW_RATE == 0 then
+                    self.col = self.col + NORMAL_SPEED
                 end
             end
         else
-            self.col = M.base_col
+            self.col = 0
         end
     elseif vim.tbl_contains(self.movements.left.normal, self.current_action) then
-        if self.col > M.base_col then
-            self.col = self.col - 1
+        if self.col > 0 then
+            self.col = self.col - NORMAL_SPEED
         else
-            self.col = width - 8
+            self.col = width - cols
         end
     elseif vim.tbl_contains(self.movements.left.fast, self.current_action) then
-        if self.col > M.base_col then
-            self.col = self.col - 2
+        if self.col > 0 then
+            self.col = self.col - FAST_SPEED
         else
-            self.col = width - 8
+            self.col = width - cols
         end
     elseif vim.tbl_contains(self.movements.left.slow, self.current_action) then
-        if self.col > M.base_col then
+        if self.col > 0 then
             if #self.frames[self.current_action] < 2 then -- if there is only one frame in the current action
-                if self.repetitions % 2 == 0 then -- then use repetitions as a counter
-                    self.col = self.col - 1
+                if self.repetitions % SLOW_RATE == 0 then -- then use repetitions as a counter
+                    self.col = self.col - NORMAL_SPEED
                 end
             else
-                if self.frame_counter % 2 == 0 then
-                    self.col = self.col - 1
+                if self.frame_counter % SLOW_RATE == 0 then
+                    self.col = self.col - NORMAL_SPEED
                 end
             end
         else
-            self.col = width - 8
+            self.col = width - cols
         end
     end
+    -- Safety check
+    local max_col = math.max(0, width - cols)
+    self.col = math.min(math.max(self.col, 0), max_col)
 end
 
 function M.Animation:set_state(new_state)
