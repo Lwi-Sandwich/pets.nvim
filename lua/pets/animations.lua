@@ -115,6 +115,22 @@ function M.Animation:stop()
     self:stop_timer()
 end
 
+-- @function synchronously erase this pet's images from the terminal
+-- hologram's writes are scheduled, so they never run while nvim is exiting
+-- this can leave a ghost sprite on screen, like on restart
+function M.Animation:delete_images_sync()
+    self:stop_timer()
+    local cmds = {}
+    for _, frames in pairs(self.frames) do
+        for _, image in pairs(frames) do
+            -- a=d,d=I: delete placements and free the image data; q=2: no reply
+            table.insert(cmds, ("\27_Ga=d,d=I,i=%d,q=2\27\\"):format(image.transmit_keys.image_id))
+        end
+    end
+    io.stdout:write(table.concat(cmds))
+    io.stdout:flush()
+end
+
 -- @function called on every tick from the timer, go to the next frame
 function M.Animation:next_frame()
     -- pouplate the buffer with spaces to avoid image distortion

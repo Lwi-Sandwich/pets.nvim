@@ -10,6 +10,16 @@ vim.api.nvim_create_autocmd({ "VimResized", "WinResized" }, {
     end,
 })
 
+-- Erase the sprites before exiting, otherwise they stay on screen
+-- Useful for :restart
+vim.api.nvim_create_autocmd("VimLeavePre", {
+    callback = function()
+        for _, pet in pairs(pets.pets) do
+            pcall(pet.animation.delete_images_sync, pet.animation)
+        end
+    end,
+})
+
 vim.api.nvim_create_user_command("PetsNew", function(input)
     local pet, style = pets.options.default_pet, pets.options.default_style
 
